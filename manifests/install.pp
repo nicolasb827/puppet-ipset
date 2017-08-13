@@ -63,6 +63,7 @@ class ipset::install {
         group   => 'root',
         mode    => '0644',
         content => template("${module_name}/init.systemd.erb"),
+        require => File['/usr/local/sbin/ipset_init'] # strong requirement
       }
       ~>
       # systemd service autostart
